@@ -20,7 +20,7 @@ MongoClient.connect(
       res.send("Hello World");
     });
 
-    app.post("/test", function (req, res, next) {
+    app.post("/post/data", function (req, res, next) {
       console.log(req.body);
 
       db.collection("data").insertOne(
