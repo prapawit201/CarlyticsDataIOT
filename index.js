@@ -17,7 +17,7 @@ MongoClient.connect(
     var db = client.db("test");
 
     app.get("/", (req, res) => {
-      res.send("Hello World");
+      res.send("Hello World, Carlytic");
     });
 
     app.post("/post/data", function (req, res, next) {
