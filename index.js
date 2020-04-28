@@ -20,7 +20,7 @@ MongoClient.connect(
       res.send("Hello World, Carlytic");
     });
 
-    app.post("/post/data", function (req, res, next) {
+    app.post("/api/data", function (req, res, next) {
       console.log(req.body);
 
       db.collection("data").insertOne(
@@ -40,7 +40,7 @@ MongoClient.connect(
       );
     });
 
-    app.get("/data", function (req, res, next) {
+    app.get("/api/data", function (req, res, next) {
       console.log(req.body);
 
       db.collection("data")
