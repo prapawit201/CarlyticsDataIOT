@@ -20,9 +20,10 @@ MongoClient.connect(
       res.send("Hello World, Carlytic Test");
     });
 
-    app.post("/api/data", function (req, res, next) {
-      console.log(req.body);
-
+    app.post("/api/data", function (req, res,) {
+      // console.log("555");
+      // console.log(req.body);
+      // res.send("ok")
       db.collection("dataIOT2").insertOne(
         {
           
@@ -46,6 +47,7 @@ MongoClient.connect(
     });
 
     app.get("/api/data", function (req, res, next) {
+      console.log("object");
       console.log(req.body);
 
       db.collection("dataIOT2")
