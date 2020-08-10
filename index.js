@@ -30,7 +30,8 @@ MongoClient.connect(
           v:req.body.v,
           session : req.body.session,
           id: req.body.id,
-          time: req.body.time
+          time: req.body.time,
+          kff1007: req.body.kff1007
           // ArduinoNo: req.body.ArduinoNo,
           // Temperature: req.body.Temperature,
           // Humidity: req.body.Humidity,
