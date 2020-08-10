@@ -47,7 +47,7 @@ MongoClient.connect(
     app.get("/api/data", function (req, res, next) {
       console.log(req.body);
 
-      db.collection("dataIOT")
+      db.collection("dataIOT2")
         .find()
         .toArray((err, result) => {
           if (err) return res.status(500).send(err.toString());
