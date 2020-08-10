@@ -26,12 +26,12 @@ MongoClient.connect(
       db.collection("dataIOT2").insertOne(
         {
           
-          eml: "no.1",
-          v:"1",
-          session : "1",
-          id: "1",
-          time: "16.29",
-          kff1007: "80"
+          eml: String,
+          v:String,
+          session : String,
+          id: String,
+          time: String,
+          kff1007: String
           // ArduinoNo: req.body.ArduinoNo,
           // Temperature: req.body.Temperature,
           // Humidity: req.body.Humidity,
