@@ -17,17 +17,19 @@ MongoClient.connect(
     var db = client.db("test");
 
     app.get("/", (req, res) => {
-      res.send("Hello World, Carlytic");
+      res.send("Hello World, Carlytic Test");
     });
 
     app.post("/api/data", function (req, res, next) {
       console.log(req.body);
 
-      db.collection("data").insertOne(
+      db.collection("dataIOT").insertOne(
         {
-          vehicle_speed: req.body.vehicle_speed,
-          oil: req.body.oil,
-          time: req.body.time,
+          eml: req.body.uml,
+          v:req.body.v,
+          session : req.body.session,
+          id: req.body.id,
+          time: req.body.time
           // ArduinoNo: req.body.ArduinoNo,
           // Temperature: req.body.Temperature,
           // Humidity: req.body.Humidity,
@@ -43,7 +45,7 @@ MongoClient.connect(
     app.get("/api/data", function (req, res, next) {
       console.log(req.body);
 
-      db.collection("data")
+      db.collection("dataIOT")
         .find()
         .toArray((err, result) => {
           if (err) return res.status(500).send(err.toString());
