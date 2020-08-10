@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 var MongoClient = require("mongodb").MongoClient;
+const DataModel = require("./data");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -21,25 +22,45 @@ MongoClient.connect(
     });
 
     app.post("/api/data", function (req, res, next) {
-      console.log(req.body);
 
-      db.collection("dataIOT").insertOne(
-        {
+      const createData = async (req, res) => {
+        console.log(req.body);
+        try {
+          const result = await DataModel.create({
           eml: req.body.eml,
           v:req.body.v,
           session : req.body.session,
           id: req.body.id,
           time: req.body.time
-          // ArduinoNo: req.body.ArduinoNo,
-          // Temperature: req.body.Temperature,
-          // Humidity: req.body.Humidity,
-        },
-        (err, result) => {
-          if (err) return res.status(500).send(err.toString());
-          console.log("ok");
-          res.sendStatus(200);
+          });
+          console.log(result);
+          res.json({ data: result });
+        } catch (error) {
+          res.status(400).json({ message: "Cannot create Data Mongo" });
+          console.log(error);
         }
-      );
+      };
+      // console.log(req.body);
+      // console.log(req.body);
+      // db.collection("dataIOT").insertOne(
+      //   {
+          
+      //     eml: req.body.eml,
+      //     v:req.body.v,
+      //     session : req.body.session,
+      //     id: req.body.id,
+      //     time: req.body.time
+      //     // ArduinoNo: req.body.ArduinoNo,
+      //     // Temperature: req.body.Temperature,
+      //     // Humidity: req.body.Humidity,
+      //   },
+      //   (err, result) => {
+      //     if (err) return res.status(500).send(err.toString());
+      //     console.log("ok");
+      //     res.sendStatus(200);
+      //   }
+      // );
+      
     });
 
     app.get("/api/data", function (req, res, next) {
