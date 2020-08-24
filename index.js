@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const axios = require("axios");
 var MongoClient = require("mongodb").MongoClient;
 
 app.use(cors());
@@ -20,30 +21,36 @@ MongoClient.connect(
       res.send("Hello World, Carlytic Test");
     });
 
-    app.post("/api/data", function (req, res,) {
+    app.post("/api/data", function (req, res) {
+      // console.log(req);
       // console.log("555");
       // console.log(req.body);
       // res.send("ok")
-      db.collection("dataIOT2").insertOne(
+      db.collection("userTest").insertOne(
         {
-          
-          eml: req.body.eml,
-          v:req.body.v,
-          session : req.body.session,
-          id: req.body.id,
-          time: req.body.time,
-          kff1007: req.body.kff1007
-          // ArduinoNo: req.body.ArduinoNo,
-          // Temperature: req.body.Temperature,
-          // Humidity: req.body.Humidity,
+          // eml: req.body.eml,
+          // v: req.body.v,
+          // session: req.body.session,
+          // id: req.body.id,
+          // time: req.body.time,
+          // kff1007: req.body.kff1007,
+
+          fName: req.body.fName,
+          lName: req.body.lName,
         },
         (err, result) => {
           if (err) return res.status(500).send(err.toString());
-          console.log("ok");
-          res.sendStatus(200);
+          console.log("ok Test");
+          console.log(result.ops);
+
+          axios
+            .post("http://localhost:5000/fetchData", ...result.ops)
+            .then((result) => {
+              res.sendStatus(200);
+              // console.log(req.body);
+            });
         }
       );
-      
     });
 
     app.get("/api/data", function (req, res, next) {
