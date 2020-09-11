@@ -18,7 +18,7 @@ MongoClient.connect(
     var db = client.db("test");
 
     app.get("/", (req, res) => {
-      res.send("Hello World, Carlytic Test MongoDB");
+      res.send("Hello World, Carlytic Test MongoDB SuSu Babe");
     });
 
     app.post("/api/data", function (req, res) {
@@ -39,7 +39,7 @@ MongoClient.connect(
           console.log(result.ops);
 
           axios
-            .post("https://hidden-peak-41918.herokuapp.com/fetchData", ...result.ops)
+            .post("https://gentle-dawn-55414.herokuapp.com/fetchData", ...result.ops)
             .then((result) => {
               res.sendStatus(200);
               // console.log(req.body);
