@@ -38,7 +38,7 @@ MongoClient.connect(
           if (err) return res.status(500).send(err.toString());
           console.log("ok Test");
           // console.log(result.ops);
-          console.log(body);
+          console.log(req.body);
           axios
             .post("https://gentle-dawn-55414.herokuapp.com/fetchData", ...result.ops)
             .then((result) => {
