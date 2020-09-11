@@ -22,27 +22,16 @@ MongoClient.connect(
     });
 
     app.post("/api/data", function (req, res) {
-      
       console.log(req.body);
 
       db.collection("test4").insertOne(
         {
-      
-          Time: req.body.Time,
+          time: req.body.Time,
           session: req.body.dataRecord.session,
-          v : req.body.dataRecord.v
-
-        
-
-          // fName: req.body.fName,
-          // lName: req.body.lName,
-        }
-        ,
+          v: req.body.dataRecord.v,
+        },
         (err, result) => {
           if (err) return res.status(500).send(err.toString());
-          console.log("ok Test");
-          // console.log(result.ops);
-          console.log(req.body);
           axios
             .post("https://gentle-dawn-55414.herokuapp.com/fetchData", ...result.ops)
             .then((result) => {
