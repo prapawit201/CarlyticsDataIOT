@@ -23,7 +23,7 @@ MongoClient.connect(
 
     app.post("/api/data", function (req, res) {
       
-      db.collection("test").insertOne(
+      db.collection("test1").insertOne(
         {
       
           // Time: req.body.Time,
@@ -32,12 +32,13 @@ MongoClient.connect(
 
           fName: req.body.fName,
           lName: req.body.lName,
-        },
+        }
+        ,
         (err, result) => {
           if (err) return res.status(500).send(err.toString());
           console.log("ok Test");
-          console.log(result.ops);
-
+          // console.log(result.ops);
+          console.log(body);
           axios
             .post("https://gentle-dawn-55414.herokuapp.com/fetchData", ...result.ops)
             .then((result) => {
