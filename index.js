@@ -18,7 +18,7 @@ MongoClient.connect(
     var db = client.db("test");
 
     app.get("/", (req, res) => {
-      res.send("Hello World, Carlytic Test");
+      res.send("Hello World, Carlytic Test MongoDB");
     });
 
     app.post("/api/data", function (req, res) {
@@ -26,12 +26,12 @@ MongoClient.connect(
       db.collection("test").insertOne(
         {
       
-          Time: req.body.Time,
-          Datarecode: req.body.Datarecode.session
+          // Time: req.body.Time,
+          // Datarecode: req.body.Datarecode.session
         
 
-          // fName: req.body.fName,
-          // lName: req.body.lName,
+          fName: req.body.fName,
+          lName: req.body.lName,
         },
         (err, result) => {
           if (err) return res.status(500).send(err.toString());
@@ -39,7 +39,7 @@ MongoClient.connect(
           console.log(result.ops);
 
           axios
-            .post("http://localhost:5000/fetchData", ...result.ops)
+            .post("https://hidden-peak-41918.herokuapp.com/fetchData", ...result.ops)
             .then((result) => {
               res.sendStatus(200);
               // console.log(req.body);
