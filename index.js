@@ -25,7 +25,7 @@ MongoClient.connect(
       
       console.log(req.body);
 
-      db.collection("test3").insertOne(
+      db.collection("test4").insertOne(
         {
       
           Time: req.body.Time,
