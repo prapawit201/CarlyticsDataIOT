@@ -23,15 +23,15 @@ MongoClient.connect(
 
     app.post("/api/data", function (req, res) {
       
-      db.collection("test1").insertOne(
+      db.collection("test2").insertOne(
         {
       
-          // Time: req.body.Time,
-          // Datarecode: req.body.Datarecode.session
+          Time: req.body.Time,
+          Datarecode: req.body.Datarecode.session
         
 
-          fName: req.body.fName,
-          lName: req.body.lName,
+          // fName: req.body.fName,
+          // lName: req.body.lName,
         }
         ,
         (err, result) => {
