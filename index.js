@@ -22,21 +22,16 @@ MongoClient.connect(
     });
 
     app.post("/api/data", function (req, res) {
-      // console.log(req);
-      // console.log("555");
-      // console.log(req.body);
-      // res.send("ok")
-      db.collection("userTest").insertOne(
+      
+      db.collection("test").insertOne(
         {
-          // eml: req.body.eml,
-          // v: req.body.v,
-          // session: req.body.session,
-          // id: req.body.id,
-          // time: req.body.time,
-          // kff1007: req.body.kff1007,
+      
+          Time: req.body.Time,
+          Datarecode: req.body.Datarecode.session
+        
 
-          fName: req.body.fName,
-          lName: req.body.lName,
+          // fName: req.body.fName,
+          // lName: req.body.lName,
         },
         (err, result) => {
           if (err) return res.status(500).send(err.toString());
