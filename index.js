@@ -29,7 +29,9 @@ MongoClient.connect(
         {
       
           Time: req.body.Time,
-          Datarecode: req.body.dataRecord.session
+          session: req.body.dataRecord.session,
+          v : req.body.dataRecord.v
+
         
 
           // fName: req.body.fName,
