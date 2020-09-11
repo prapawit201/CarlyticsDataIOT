@@ -23,6 +23,8 @@ MongoClient.connect(
 
     app.post("/api/data", function (req, res) {
       
+      console.log(req.body);
+
       db.collection("test2").insertOne(
         {
       
