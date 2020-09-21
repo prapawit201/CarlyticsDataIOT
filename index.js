@@ -23,7 +23,7 @@ MongoClient.connect(
 
     app.post("/api/data", function (req, res) {
       // console.log(req.body);
-      console.log(req.body.dataRecord.kff1005);
+      console.log(req.body);
       db.collection("test5").insertOne(
         {
           time: req.body.Time,
