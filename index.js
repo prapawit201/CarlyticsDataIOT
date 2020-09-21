@@ -23,14 +23,13 @@ MongoClient.connect(
 
     app.post("/api/data", function (req, res) {
       // console.log(req.body);
-      console.log(req.body.dataRecord);
+      console.log(req.body.dataRecord.kff1005);
       db.collection("test5").insertOne(
         {
           time: req.body.Time,
           eml: req.body.dataRecord.eml,
-          kff105: req.body.dataRecord.kff105,
-          kff106: req.body.dataRecord.kff106,
-          kff107: req.body.dataRecord.kff107,
+          kff105: req.body.dataRecord.kff1005,
+          kff106: req.body.dataRecord.kff1006,
         },
         (err, result) => {
           if (err) return res.status(500).send(err.toString());
