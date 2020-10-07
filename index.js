@@ -24,7 +24,7 @@ MongoClient.connect(
     app.post("/api/data", function (req, res) {
       // console.log(req.body);
       console.log(req.body);
-      db.collection("test6").insertOne(
+      db.collection("test7").insertOne(
         {
           time: req.body.Time,
           eml: req.body.dataRecord.eml,
