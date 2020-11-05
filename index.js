@@ -31,7 +31,8 @@ MongoClient.connect(
           kff1005: req.body.dataRecord.kff1005,
           kff1006: req.body.dataRecord.kff1006,
           kd: req.body.dataRecord.kd,
-          kc: req.body.dataRecord.kc
+          kc: req.body.dataRecord.kc,
+          k4: req.body.dataRecord.k4
         },
         (err, result) => {
           if (err) return res.status(500).send(err.toString());
